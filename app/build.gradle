@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "com.ecode.ecar"
+        minSdkVersion 21
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+ext {
+    DAGGER_VERSION = '2.5'
+    BUTTERKNIFE_VERSION = '8.2.1'
+    EVENTBUS_VERSION = '3.0.0'
+    OPENXC_VERSION = '6.1.6+'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+
+    //region Dagger2 dependencies
+    apt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    provided 'javax.annotation:jsr250-api:1.0'
+    //endregion
+
+    //region Butteknife dependencies
+    compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
+    apt "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
+    //endregion
+
+    //region Eventbus dependencies
+    compile "org.greenrobot:eventbus:$EVENTBUS_VERSION"
+    //endregion
+
+    //region OpenXC dependencies
+    compile "com.openxcplatform:library:$OPENXC_VERSION"
+    //endregion
+}
