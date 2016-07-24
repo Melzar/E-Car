@@ -16,5 +16,5 @@
             </intent-filter>
         </activity>
     </application>
-
+    <service android:name="com.openxc.VehicleManager"/>
 </manifest>
