@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            android:id="@+id/main_car_action"
+            name="car_action"
+            type="com.ecode.ecar.model.CarAction"/>
+    </data>
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +17,9 @@
     tools:context="com.ecode.ecar.MainActivity">
 
     <TextView
+        android:id="@+id/main_carspeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="@{Double.toString(car_action.speed)}"/>
 </RelativeLayout>
+</layout>
