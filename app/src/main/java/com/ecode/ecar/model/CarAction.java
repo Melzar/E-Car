@@ -3,25 +3,48 @@ package com.ecode.ecar.model;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import com.ecode.ecar.BR;
+import com.ecode.ecar.R;
 
 /**
  * Created by matuszewski on 29/07/16.
  */
 public class CarAction extends BaseObservable{
 
-    private double speed;
+    private int engineSpeed = 0;
+    private int carSpeed = 0;
+    private String gearNumber = "N";
 
-    public CarAction(double speed) {
-        this.speed = speed;
+    public CarAction() {
     }
 
     @Bindable
-    public double getSpeed() {
-        return speed;
+    public int getEngineSpeed() {
+        return engineSpeed;
     }
 
-    public void setSpeed(double speed) {
-        this.speed = speed;
-        notifyPropertyChanged(BR.speed);
+    @Bindable
+    public String getGearNumber() {
+        return gearNumber;
     }
+
+    @Bindable
+    public int getCarSpeed() {
+        return carSpeed;
+    }
+
+    public void setEngineSpeed(int engineSpeed) {
+        this.engineSpeed = engineSpeed;
+        notifyPropertyChanged(BR.engineSpeed);
+    }
+
+    public void setGearNumber(String gearNumber) {
+        this.gearNumber = gearNumber;
+        notifyPropertyChanged(BR.gearNumber);
+    }
+
+    public void setCarSpeed(int carSpeed) {
+        this.carSpeed = carSpeed;
+        notifyPropertyChanged(BR.carSpeed);
+    }
+
 }

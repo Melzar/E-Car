@@ -7,12 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ecode.ecar.R;
-import com.ecode.ecar.datasource.bluetooth.CarEngineSpeedListener;
+import com.ecode.ecar.datasource.bluetooth.impl.CarEngineSpeedListenerImpl;
+import com.ecode.ecar.datasource.bluetooth.impl.CarGearTransmissionListenerImpl;
+import com.ecode.ecar.datasource.bluetooth.impl.CarSpeedListenerImpl;
 import com.ecode.ecar.service.CarBluetoothConnectionService;
 import com.openxc.VehicleManager;
 import com.openxc.measurements.EngineSpeed;
 import com.openxc.measurements.Measurement;
-
+import com.openxc.measurements.TransmissionGearPosition;
+import com.openxc.measurements.VehicleSpeed;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
@@ -29,7 +32,9 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(bundle);
         setContentView(R.layout.activity_main);
         carBluetoothConnectionService = new CarBluetoothConnectionService(new HashMap<Class, Measurement.Listener>(){{
-               put(EngineSpeed.class, new CarEngineSpeedListener());
+               put(EngineSpeed.class, new CarEngineSpeedListenerImpl());
+               put(VehicleSpeed.class, new CarSpeedListenerImpl());
+               put(TransmissionGearPosition.class, new CarGearTransmissionListenerImpl());
         }});
     }
 

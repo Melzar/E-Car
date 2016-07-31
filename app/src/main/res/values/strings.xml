@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">eCar</string>
+
+    <!-- Gear mapping -->
+    <string name="gear.first">1</string>
+    <string name="gear.second">2</string>
+    <string name="gear.third">3</string>
+    <string name="gear.fourth">4</string>
+    <string name="gear.fifth">5</string>
+    <string name="gear.sixth">6</string>
+    <string name="gear.seventh">7</string>
+    <string name="gear.eighth">8</string>
+    <string name="gear.neutral">N</string>
+    <string name="gear.reverse">R</string>
+
 </resources>
