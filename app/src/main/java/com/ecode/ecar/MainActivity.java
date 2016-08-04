@@ -7,13 +7,16 @@ import android.widget.TextView;
 
 import com.ecode.ecar.activity.BaseActivity;
 import com.ecode.ecar.common.enumeration.car.CarGearEnumMapper;
+import com.ecode.ecar.datasource.bluetooth.CarFuelLevelListener;
 import com.ecode.ecar.datasource.bluetooth.CarSpeedListener;
 import com.ecode.ecar.event.CarEngineSpeedEvent;
+import com.ecode.ecar.event.CarFuelLevelEvent;
 import com.ecode.ecar.event.CarGearTransmissionEvent;
 import com.ecode.ecar.event.CarSpeedEvent;
 import com.ecode.ecar.model.CarAction;
 import com.ecode.ecar.service.CarBluetoothConnectionService;
 import com.openxc.measurements.EngineSpeed;
+import com.openxc.measurements.FuelLevel;
 import com.openxc.measurements.TransmissionGearPosition;
 import com.openxc.measurements.VehicleSpeed;
 
@@ -52,5 +55,10 @@ public class MainActivity extends BaseActivity {
                 getString(CarGearEnumMapper.getMappedGearValue(((TransmissionGearPosition) event.getMeasurement())
                         .getValue().enumValue().ordinal()))
         );
+    }
+
+    @Subscribe
+    public void onEvent(final CarFuelLevelEvent event) {
+        carAction.setFuelLevel(((FuelLevel) event.getMeasurement()).getValue().doubleValue());
     }
 }

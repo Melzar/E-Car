@@ -12,6 +12,8 @@ public class CarAction extends BaseObservable{
 
     private int engineSpeed = 0;
     private int carSpeed = 0;
+    private double fuelLevel = 0.0;
+    private double fuelConsumed = 0.0;
     private String gearNumber = "N";
 
     public CarAction() {
@@ -30,6 +32,26 @@ public class CarAction extends BaseObservable{
     @Bindable
     public int getCarSpeed() {
         return carSpeed;
+    }
+
+    @Bindable
+    public double getFuelLevel() {
+        return fuelLevel;
+    }
+
+    @Bindable
+    public double getFuelConsumed() {
+        return fuelConsumed;
+    }
+
+    public void setFuelLevel(double fuelLevel) {
+        this.fuelLevel = fuelLevel;
+        notifyPropertyChanged(BR.fuelLevel);
+    }
+
+    public void setFuelConsumed(double fuelConsumed) {
+        this.fuelConsumed = fuelConsumed;
+        notifyPropertyChanged(BR.fuelConsumed);
     }
 
     public void setEngineSpeed(int engineSpeed) {
