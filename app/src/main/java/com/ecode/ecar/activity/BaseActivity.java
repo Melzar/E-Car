@@ -7,16 +7,27 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.ecode.ecar.R;
+import com.ecode.ecar.datasource.bluetooth.impl.CarAcceleratorPedalPositionListenerImpl;
+import com.ecode.ecar.datasource.bluetooth.impl.CarBreakPedalStatusListenerImpl;
 import com.ecode.ecar.datasource.bluetooth.impl.CarEngineSpeedListenerImpl;
 import com.ecode.ecar.datasource.bluetooth.impl.CarFuelConsumptionListenerImpl;
 import com.ecode.ecar.datasource.bluetooth.impl.CarFuelLevelListenerImpl;
 import com.ecode.ecar.datasource.bluetooth.impl.CarGearTransmissionListenerImpl;
+import com.ecode.ecar.datasource.bluetooth.impl.CarHeadlampStatusListenerImpl;
+import com.ecode.ecar.datasource.bluetooth.impl.CarHighBeamStatusListenerImpl;
+import com.ecode.ecar.datasource.bluetooth.impl.CarParkingBreakStatusListenerImpl;
 import com.ecode.ecar.datasource.bluetooth.impl.CarSpeedListenerImpl;
 import com.ecode.ecar.service.CarBluetoothConnectionService;
 import com.openxc.VehicleManager;
+import com.openxc.measurements.AcceleratorPedalPosition;
+import com.openxc.measurements.BrakePedalStatus;
 import com.openxc.measurements.EngineSpeed;
+import com.openxc.measurements.FuelConsumed;
 import com.openxc.measurements.FuelLevel;
+import com.openxc.measurements.HeadlampStatus;
+import com.openxc.measurements.HighBeamStatus;
 import com.openxc.measurements.Measurement;
+import com.openxc.measurements.ParkingBrakeStatus;
 import com.openxc.measurements.TransmissionGearPosition;
 import com.openxc.measurements.VehicleSpeed;
 import org.greenrobot.eventbus.EventBus;
@@ -39,6 +50,12 @@ public class BaseActivity extends AppCompatActivity {
                put(VehicleSpeed.class, new CarSpeedListenerImpl());
                put(TransmissionGearPosition.class, new CarGearTransmissionListenerImpl());
                put(FuelLevel.class, new CarFuelLevelListenerImpl());
+               put(FuelConsumed.class, new CarFuelConsumptionListenerImpl());
+               put(BrakePedalStatus.class, new CarBreakPedalStatusListenerImpl());
+               put(AcceleratorPedalPosition.class, new CarAcceleratorPedalPositionListenerImpl());
+               put(ParkingBrakeStatus.class, new CarParkingBreakStatusListenerImpl());
+               put(HighBeamStatus.class, new CarHighBeamStatusListenerImpl());
+               put(HeadlampStatus.class, new CarHeadlampStatusListenerImpl());
         }});
     }
 

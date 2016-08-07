@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
+        <import type="android.view.View"/>
         <variable
             android:id="@+id/dashboard_engine_speed_variable"
             name="car_action"
@@ -59,6 +60,91 @@
         android:textSize="50sp"
         android:text="@{car_action.gearNumber}"
         />
-
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/dashboard_calculations_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dashboard_gear"
+        android:weightSum="5"
+        android:orientation="horizontal">
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/dashboard_car_break_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="@{car_action.breakPedalEnabled ? View.VISIBLE : View.INVISIBLE}"
+            android:src="@drawable/chevron_double_left"
+            />
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="3">
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/dashboard_fuel_consumption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textAlignment="center"
+                android:text="@{Double.toString(car_action.fuelConsumption)}"
+                />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/dashboard_car_acceleration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:visibility="@{car_action.carAcceleration > 0 ? View.VISIBLE : View.INVISIBLE }"
+                android:textAlignment="center"
+                android:text="@{Double.toString(car_action.carAcceleration)}"
+                />
+        </android.support.v7.widget.LinearLayoutCompat>
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/dashboard_car_acceleration_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:visibility="@{car_action.carAcceleration > 0 ? View.VISIBLE : View.INVISIBLE }"
+            android:src="@drawable/chevron_double_right"
+            />
+    </android.support.v7.widget.LinearLayoutCompat>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_below="@id/dashboard_calculations_container"
+        android:id="@+id/dashboard_controls_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/dashboard_parking_break_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:visibility="@{car_action.parkingBreakPedalEnabled ? View.VISIBLE : View.INVISIBLE}"
+            android:src="@drawable/alert_circle_outline"/>
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/dashboard_high_beam_light_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:visibility="@{car_action.headlampEnabled ? View.VISIBLE : View.INVISIBLE}"
+            android:src="@drawable/headlight"/>
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/dashboard_head_lamp_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:visibility="@{car_action.highBeamEnabled ? View.VISIBLE : View.INVISIBLE}"
+            android:src="@drawable/highbeam"/>
+        <!--<android.support.v7.widget.AppCompatImageView-->
+            <!--android:id="@+id/dashboard_todo_icon"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:visibility="invisible"-->
+            <!--android:src="@drawable/alert_circle_outline"/>-->
+    </android.support.v7.widget.LinearLayoutCompat>
 </RelativeLayout>
 </layout>

@@ -13,8 +13,13 @@ public class CarAction extends BaseObservable{
     private int engineSpeed = 0;
     private int carSpeed = 0;
     private double fuelLevel = 0.0;
-    private double fuelConsumed = 0.0;
+    private double fuelConsumption = 0.0;
     private String gearNumber = "N";
+    private boolean breakPedalEnabled = false;
+    private boolean parkingBreakPedalEnabled = false;
+    private boolean headlampEnabled = false;
+    private boolean highBeamEnabled = false;
+    private double carAcceleration = 0.0;
 
     public CarAction() {
     }
@@ -40,8 +45,58 @@ public class CarAction extends BaseObservable{
     }
 
     @Bindable
-    public double getFuelConsumed() {
-        return fuelConsumed;
+    public double getFuelConsumption() {
+        return fuelConsumption;
+    }
+
+    @Bindable
+    public boolean isBreakPedalEnabled() {
+        return breakPedalEnabled;
+    }
+
+    @Bindable
+    public double getCarAcceleration() {
+        return carAcceleration;
+    }
+
+    @Bindable
+    public boolean isParkingBreakPedalEnabled() {
+        return parkingBreakPedalEnabled;
+    }
+
+    @Bindable
+    public boolean isHeadlampEnabled() {
+        return headlampEnabled;
+    }
+
+    @Bindable
+    public boolean isHighBeamEnabled() {
+        return highBeamEnabled;
+    }
+
+    public void setHeadlampEnabled(boolean headlampEnabled) {
+        this.headlampEnabled = headlampEnabled;
+        notifyPropertyChanged(BR.headlampEnabled);
+    }
+
+    public void setHighBeamEnabled(boolean highBeamEnabled) {
+        this.highBeamEnabled = highBeamEnabled;
+        notifyPropertyChanged(BR.highBeamEnabled);
+    }
+
+    public void setParkingBreakPedalEnabled(boolean parkingBreakPedalEnabled) {
+        this.parkingBreakPedalEnabled = parkingBreakPedalEnabled;
+        notifyPropertyChanged(BR.parkingBreakPedalEnabled);
+    }
+
+    public void setCarAcceleration(double carAcceleration) {
+        this.carAcceleration = carAcceleration;
+        notifyPropertyChanged(BR.carAcceleration);
+    }
+
+    public void setBreakPedalEnabled(boolean breakPedalEnabled) {
+        this.breakPedalEnabled = breakPedalEnabled;
+        notifyPropertyChanged(BR.breakPedalEnabled);
     }
 
     public void setFuelLevel(double fuelLevel) {
@@ -49,9 +104,9 @@ public class CarAction extends BaseObservable{
         notifyPropertyChanged(BR.fuelLevel);
     }
 
-    public void setFuelConsumed(double fuelConsumed) {
-        this.fuelConsumed = fuelConsumed;
-        notifyPropertyChanged(BR.fuelConsumed);
+    public void setFuelConsumption(double fuelConsumption) {
+        this.fuelConsumption = fuelConsumption;
+        notifyPropertyChanged(BR.fuelConsumption);
     }
 
     public void setEngineSpeed(int engineSpeed) {
